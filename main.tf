@@ -4,8 +4,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-03ff931c79d0e2c80"
-  instance_type = "t2.micro"
+  ami           = "var.ami-id"
+  instance_type = "var.instancesize"
+  subnet        = "aws_subnet.privatesubnet"
 
   tags = {
     Name = "ExampleAppServerInstance"
@@ -40,4 +41,14 @@ resource "aws_internet_gateway" "demo-gw" {
   tags = {
     Name = "igw-${random_string.random.id}"
   }
+}
+
+variable "instancesize" {
+  type = "string"
+  default = "m5.large"
+}
+
+variable "ami-id" {
+  type = "string"
+  default = "ami-0c19f80dba70861db"
 }
