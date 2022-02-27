@@ -33,3 +33,11 @@ resource "aws_subnet" "privatesubnet" {
     Name = "demo-private-${random_string.random.id}"
   }
 }
+
+resource "aws_internet_gateway" "demo-gw" {
+  vpc_id = aws_vpc.demovpc.id
+
+  tags = {
+    Name = "igw-${random_string.random.id}"
+  }
+}
