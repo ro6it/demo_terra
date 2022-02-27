@@ -4,8 +4,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "var.ami-id"
-  instance_type = "var.instancesize"
+  ami           = var.ami-id
+  instance_type = var.instancesize
   subnet_id     = aws_subnet.privatesubnet.id
 
   tags = {
@@ -50,5 +50,5 @@ variable "instancesize" {
 
 variable "ami-id" {
   type = string
-  default = "ami-0c19f80dba70861db"
+  default = "ami-02c4808b9f729b235"
 }
