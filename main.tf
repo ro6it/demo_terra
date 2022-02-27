@@ -45,7 +45,7 @@ resource "aws_internet_gateway" "demo-gw" {
 
 variable "instancesize" {
   type = string
-  default = "m5.large"
+  default = "t3.small"
 }
 
 variable "ami-id" {
