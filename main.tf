@@ -24,3 +24,12 @@ resource "aws_vpc" "demovpc" {
     Name = "demovpc"
   }
 }
+
+resource "aws_subnet" "privatesubnet" {
+  vpc_id     = aws_vpc.demovpc.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "demo-private-${random_string.random.id}"
+  }
+}
