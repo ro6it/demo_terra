@@ -6,7 +6,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = "var.ami-id"
   instance_type = "var.instancesize"
-  subnet        = "aws_subnet.privatesubnet.id"
+  subnet        = aws_subnet.privatesubnet.id
 
   tags = {
     Name = "ExampleAppServerInstance"
