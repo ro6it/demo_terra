@@ -35,7 +35,7 @@ resource "aws_subnet" "privatesubnet" {
   }
 }
 
-resource "aws_subnet" "privatesubnet" {
+resource "aws_subnet" "privatesubnet2" {
   vpc_id     = aws_vpc.demovpc.id
   cidr_block = var.newsubnet
 
