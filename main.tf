@@ -35,6 +35,16 @@ resource "aws_subnet" "privatesubnet" {
   }
 }
 
+resource "aws_subnet" "privatesubnet" {
+  vpc_id     = aws_vpc.demovpc.id
+  cidr_block = var.newsubnet
+
+  tags = {
+    Name = "demo-private-${random_string.random.id}"
+  }
+}
+
+
 resource "aws_internet_gateway" "demo-gw" {
   vpc_id = aws_vpc.demovpc.id
 
@@ -51,4 +61,8 @@ variable "instancesize" {
 variable "ami-id" {
   type = string
   default = "ami-02c4808b9f729b235"
+}
+
+variable "newsubnet" {
+  type = string
 }
